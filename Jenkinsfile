@@ -10,26 +10,38 @@ pipeline {
                 steps {
                 echo 'Building..'
                 sh 'dotnet build'
+                echo 'Testing Dotnet'
+                sh 'dotnet test'
+
             }
         }
         stage('Node') {
             agent {
             docker { image 'node' }
             }
-            steps {
-                echo 'installing node..'
-                dir("DotnetTemplate.Web") {
-                sh 'npm install'
-                sh 'npm run build'
-            }
-
+            
+            stages {
+                stage('Build Node') {
+                    steps{
+                        echo 'installing node..'
+                        dir("DotnetTemplate.Web") {
+                            sh 'npm install'
+                            sh 'npm run build'
+                            
+                        }
+                    }
+                }
+                stage ('Test Node'){
+                    steps{
+                        echo 'Testing node..'
+                        dir("DotnetTemplate.Web") {
+                            sh 'npm t'
+                            sh 'npm run lint'
+                        }
+                    }
+                }
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-                
-            }
-        }
+        
     }
 }
