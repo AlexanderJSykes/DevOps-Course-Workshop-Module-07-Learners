@@ -9,9 +9,17 @@ pipeline {
                 sh 'dotnet build'
             }
         }
-        stage('Test') {
+        stage('Node') {
+            agent {
+            docker { image 'node' }
+            }
             steps {
-                echo 'Testing..'
+                echo 'installing node..'
+                dir("DotnetTemplate.Web") {
+                sh 'npm install'
+                sh 'npm run build'
+            }
+
             }
         }
         stage('Deploy') {
