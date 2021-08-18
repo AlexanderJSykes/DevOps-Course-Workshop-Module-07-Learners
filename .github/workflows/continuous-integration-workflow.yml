@@ -12,22 +12,22 @@ jobs:
       run: dotnet build
 
     - name: Install npm
-      working-directory: DotnetTemplate.web  
+      working-directory: DotnetTemplate.Web  
       run: npm install
 
     - name: Build TypeScript Code
-      working-directory: DotnetTemplate.web  
+      working-directory: DotnetTemplate.Web  
       run: npm run build
 
     - name: Run Dotnet Test
       run: dotnet test
 
     - name: Run Typescript Test
-      working-directory: DotnetTemplate.web  
+      working-directory: DotnetTemplate.Web  
       run: npm t
 
     - name: Run Lint
-      working-directory: DotnetTemplate.web  
+      working-directory: DotnetTemplate.Web  
       run: npm run lint
   
     
