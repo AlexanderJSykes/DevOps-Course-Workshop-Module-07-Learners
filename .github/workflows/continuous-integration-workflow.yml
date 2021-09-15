@@ -32,7 +32,7 @@ jobs:
   
   prod-check:
     runs-on: ubuntu-latest
-    steps:
+   heroku login steps:
     - run: echo "Deploying to production server on branch $GITHUB_REF"
 
     - name: Login to DockerHub
