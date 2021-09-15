@@ -47,13 +47,13 @@ jobs:
       with:
         push: true
         tags: alecsykes/app:latest
-        
+
     - uses: actions/checkout@v2
     - uses: akhileshns/heroku-deploy@v3.12.12
       with:
         heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
         heroku_app_name: "limitless-falls-90719"
-        horoku_email: ${{ secrets.HEROKU_EMAIL }}
+        heroku_email: ${{ secrets.HEROKU_EMAIL }}
 
    
   
