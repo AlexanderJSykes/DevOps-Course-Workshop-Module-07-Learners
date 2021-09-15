@@ -30,7 +30,7 @@ jobs:
       working-directory: DotnetTemplate.Web  
       run: npm run lint
   
- - prod-check:
+  prod-check:
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
